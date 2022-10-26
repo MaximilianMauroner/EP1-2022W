@@ -1,4 +1,6 @@
+import java.math.BigDecimal;
 import java.nio.file.attribute.UserDefinedFileAttributeView;
+import java.util.Arrays;
 
 public class Testaufgabe {
     public static void main(String[] args) {
@@ -29,9 +31,15 @@ public class Testaufgabe {
 //        findMatches(data0, data0[1], target1);
 //        findMatches(data1, data0[1], target1);
 //        findMatches(data1, data0[2], target2);
-        System.out.println(insertMiddle("XY", "abc")); //0-12/34-56.7-89/01-23
-        System.out.println(insertMiddle("01234", "abc")); //0-12/34-56.7-89/01-23
-        System.out.println(insertMiddle("01234567890123", "./-")); //0-12/34-56.7-89/01-23
+
+
+//        System.out.println(insertMiddle("XY", "abc")); //0-12/34-56.7-89/01-23
+//        System.out.println(insertMiddle("01234", "abc")); //0-12/34-56.7-89/01-23
+//        System.out.println(insertMiddle("01234567890123", "./-")); //0-12/34-56.7-89/01-23
+        int a = Integer.MAX_VALUE;
+        long b = 0L;
+        long c = ++a + b;
+        System.out.println(c);
     }
 
     public static void toStringify2D(int[][] temp) {
@@ -116,10 +124,9 @@ public class Testaufgabe {
 
     public static void findMatches(int[][] data, int[] pattern, int[] target) {
         for (int i = 0; i < data.length; i++) {
-            int count = patternInArray(data[i], pattern);
-            target[i] = count;
+            target[i] = patternInArray(data[i], pattern);
         }
-        toStringify(target);
+        System.out.println(Arrays.toString(target));
     }
 
     public static int patternInArray(int[] data, int[] pattern) {
@@ -129,6 +136,7 @@ public class Testaufgabe {
             for (int j = 0; j < pattern.length; j++) {
                 if (!(data.length > i + j && data[i + j] == pattern[j])) {
                     patternActive = false;
+                    break;
                 }
             }
             if (patternActive) {
@@ -152,5 +160,14 @@ public class Testaufgabe {
             remaining = seps.substring(1);
         }
         return insertMiddle(leftHalf, remaining) + seps.charAt(0) + insertMiddle(rightHalf, remaining);
+    }
+
+    public static int fibo(int a) {
+        if (a == 1) {
+            return 1;
+        } else if (a < 1) {
+            return 0;
+        }
+        return fibo(a - 1) + fibo(a - 2);
     }
 }
