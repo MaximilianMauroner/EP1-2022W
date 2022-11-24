@@ -22,13 +22,13 @@ public class Aufgabe5 {
 
     /**
      * Increasing amounts
-     * rad 128 = 1365    +1024
-     * rad 64 = 341  +256
-     * rad 32 = 85   +64
-     * rad 16 = 21   +16
-     * rad 8 = 5     +4
-     * rad 4 = 1     +1
-     * rad 2 = 0;
+     * radius 128 = 1365    +1024
+     * radius 64 = 341  +256
+     * radius 32 = 85   +64
+     * radius 16 = 21   +16
+     * radius 8 = 5     +4
+     * radius 4 = 1     +1
+     * radius 2 = 0;
      *
      * @param myDrawObj
      * @param maxRadius
@@ -39,11 +39,11 @@ public class Aufgabe5 {
 //        calculate the amount of radius duplications
         int increments = (int) (Math.log(maxRadius) / Math.log(2)) - 2;
 
-        int x = r * 2;
+        int x = (int) Math.sqrt(Math.pow(4, increments));
         int y = r * 2;
         int counter = 0;
 
-        for (int i = 0; increments >= 0; i++) {
+        for (int i = 1; 0 <= increments; i++) {
             myDrawObj.setColor(Color.orange);
             myDrawObj.fillCircle(x, y, r);
             myDrawObj.setColor(Color.red);
@@ -57,7 +57,8 @@ public class Aufgabe5 {
                 y = r * 2;
                 continue;
             }
-            if (x + r * 4 >= myDrawObj.getWidth()) {
+//            get the amount of rows and then start with a new row
+            if (i != 0 && i % Math.sqrt(Math.pow(4, increments)) == 0) {
                 x = r * 2;
                 y += r * 4;
             } else {
@@ -67,13 +68,13 @@ public class Aufgabe5 {
     }
 
     public static void main(String[] args) {
-        int rad = 128;
+        int radius = 32;
         int width = 512;
         int height = 512;
         CodeDraw recursiveCodeDraw = new CodeDraw(width, height);
         CodeDraw iterativeCodeDraw = new CodeDraw(width, height);
-        drawCirclePatternRecursively(recursiveCodeDraw, width / 2, height / 2, rad);
-        drawCirclePatternIteratively(iterativeCodeDraw, rad);
+        drawCirclePatternRecursively(recursiveCodeDraw, width / 2, height / 2, radius);
+        drawCirclePatternIteratively(iterativeCodeDraw, radius);
         recursiveCodeDraw.show();
         iterativeCodeDraw.show();
     }
