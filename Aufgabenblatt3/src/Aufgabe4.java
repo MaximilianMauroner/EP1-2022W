@@ -4,13 +4,27 @@
 public class Aufgabe4 {
 
     private static int countNOrderedPairs(String text, int index) {
-        // TODO: Implementieren Sie hier Ihre Lösung für die Methode
-        return -1; //Zeile kann geändert oder entfernt werden.
+        if (index > -1) {
+            text = text.substring(index);
+            index = -1;
+        }
+        if (text.length() <= 1) {
+            return Math.abs(index + 1);
+        }
+        if (text.charAt(0) <= text.charAt(1)) {
+            index--;
+        }
+        return countNOrderedPairs(text.substring(1), index);
     }
 
     private static String shiftAllSignsRight(String text, char sign) {
-        // TODO: Implementieren Sie hier Ihre Lösung für die Methode
-        return null; //Zeile kann geändert oder entfernt werden.
+        if (text.length() <= 1) {
+            return text;
+        }
+        if (text.charAt(0) == sign) {
+            text = text.substring(1) + sign + "";
+        }
+        return text.charAt(0) + shiftAllSignsRight(text.substring(1), sign);
     }
 
     public static void main(String[] args) {
@@ -36,7 +50,7 @@ public class Aufgabe4 {
         assert (countNOrderedPairs(text, 8) == 4);
 
         assert (shiftAllSignsRight("az3kj", 'z').equals("a3kjz"));
-        assert (shiftAllSignsRight("kjdn{nd8xngs+d#k",'n').equals("kjd{d8xgs+d#knnn"));
+        assert (shiftAllSignsRight("kjdn{nd8xngs+d#k", 'n').equals("kjd{d8xgs+d#knnn"));
         assert (shiftAllSignsRight("", 'e').equals(""));
         assert (shiftAllSignsRight("4", '4').equals("4"));
         assert (shiftAllSignsRight("ji)o3ie6pk(2i", 'i').equals("j)o3e6pk(2iii"));

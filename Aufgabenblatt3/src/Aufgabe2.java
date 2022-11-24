@@ -4,19 +4,31 @@
 public class Aufgabe2 {
 
     private static void addSign(String text, char sign) {
-        //TODO: Implementieren Sie hier Ihre Lösung für die Angabe
+        int charCounter = 1;
+        for (int i = 0; i < text.length(); i++) {
+            System.out.print(text.charAt(i) + "");
+            if (i < text.length() - 1) {
+                for (int j = 0; j < charCounter; j++) {
+                    System.out.print(sign);
+                }
+                charCounter++;
+            }
+        }
+        System.out.println();
     }
 
     private static void addSign(int number, char sign) {
-        //TODO: Implementieren Sie hier Ihre Lösung für die Angabe
+        addSign(Integer.toString(number), sign);
     }
 
     private static void addSign(String text, String signs) {
-        //TODO: Implementieren Sie hier Ihre Lösung für die Angabe
+        for (int i = 0; i < signs.length(); i++) {
+            addSign(text, signs.charAt(i));
+        }
     }
 
     private static void addSign(String text) {
-        //TODO: Implementieren Sie hier Ihre Lösung für die Angabe
+        addSign(text, '=');
     }
 
     public static void main(String[] args) {
