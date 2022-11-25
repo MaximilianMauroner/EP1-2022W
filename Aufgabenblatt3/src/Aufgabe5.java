@@ -38,9 +38,15 @@ public class Aufgabe5 {
         int r = 4;
 //        calculate the amount of radius duplications
         int increments = (int) (Math.log(maxRadius) / Math.log(2)) - 2;
+        int width = myDrawObj.getWidth();
+        int height = myDrawObj.getHeight();
 
-        int x = (int) Math.sqrt(Math.pow(4, increments));
-        int y = r * 2;
+        int countCirclesSingleBorder = (int) Math.sqrt(Math.pow(4, increments));
+//        startpunkt durch Probieren gefunden
+        int boxStart = countCirclesSingleBorder * r * 2 - (2 * r);
+        int x = (width / 2) - boxStart;
+        int y = (height / 2) - boxStart;
+
         int counter = 0;
 
         for (int i = 1; 0 <= increments; i++) {
@@ -53,13 +59,15 @@ public class Aufgabe5 {
                 counter += Math.pow(4, increments);
                 increments--;
                 r *= 2;
-                x = r * 2;
-                y = r * 2;
+                countCirclesSingleBorder = (int) Math.sqrt(Math.pow(4, increments));
+                boxStart = boxStart - r;
+                x = (width / 2) - boxStart;
+                y = (height / 2) - boxStart;
                 continue;
             }
 //            get the amount of rows and then start with a new row
             if (i != 0 && i % Math.sqrt(Math.pow(4, increments)) == 0) {
-                x = r * 2;
+                x = (width / 2) - boxStart;
                 y += r * 4;
             } else {
                 x += r * 4;
@@ -68,14 +76,16 @@ public class Aufgabe5 {
     }
 
     public static void main(String[] args) {
-        int radius = 32;
+        int radius = 64;
         int width = 512;
         int height = 512;
         CodeDraw recursiveCodeDraw = new CodeDraw(width, height);
         CodeDraw iterativeCodeDraw = new CodeDraw(width, height);
         drawCirclePatternRecursively(recursiveCodeDraw, width / 2, height / 2, radius);
         drawCirclePatternIteratively(iterativeCodeDraw, radius);
+        recursiveCodeDraw.setTitle("recursive");
         recursiveCodeDraw.show();
+        iterativeCodeDraw.setTitle("iterartive");
         iterativeCodeDraw.show();
     }
 }
