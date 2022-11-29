@@ -10,7 +10,7 @@ public class Aufgabe1 {
     //TODO zu Punkt b): Beschreiben Sie in wenigen Sätzen was Sie ändern würden und warum
     // Die Formatierung soll immer gleich sein
     // Versuchen die Schleifen auf das Minimum reduzieren
-    //
+    // Funktionen nutzten
 
 
     //TODO zu Punkt c): Implementieren Sie hier die Methoden Ihrer Lösung
