@@ -6,7 +6,6 @@ import java.util.Arrays;
 public class Aufgabe2 {
 
     public static void main(String[] args) {
-        // TODO: Implementieren Sie hier Ihre Lösung für die Angabe
         int[] a_aufgabe_arr = new int[]{6, 1, 8, 2, 5, 3, 4, 7, 9, 0};
         for (int i = 0; i < a_aufgabe_arr.length; i++) {
             if (a_aufgabe_arr.length == i + 1) {
