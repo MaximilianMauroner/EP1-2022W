@@ -7,18 +7,34 @@ import java.util.Arrays;
 public class Aufgabe5 {
 
     private static int[][] genFilledArray(int n) {
-        // TODO: Implementieren Sie hier Ihre Lösung für die Methode
-        return null; //Zeile kann geändert oder entfernt werden.
+        int[][] arr = new int[n][n];
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                arr[i][j] = j + i;
+            }
+        }
+        return arr;
     }
 
     private static int[][] extendArray(int[] inputArray) {
-        // TODO: Implementieren Sie hier Ihre Lösung für die Methode
-        return null; //Zeile kann geändert oder entfernt werden.
+        int[][] arr = new int[inputArray.length][];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = new int[inputArray[i] * 2 + 1];
+            for (int j = 0; j < arr[i].length; j++) {
+                arr[i][j] = j == inputArray[i] ? inputArray[i] : -1;
+            }
+        }
+        return arr;
     }
 
     private static int[] reformatArray(int[][] inputArray) {
-        // TODO: Implementieren Sie hier Ihre Lösung für die Methode
-        return null; //Zeile kann geändert oder entfernt werden.
+        int[] arr = new int[inputArray.length];
+        for (int i = 0; i < inputArray.length; i++) {
+            for (int j = 0; j < inputArray[i].length; j++) {
+                arr[i] = inputArray[i][j] == 0 ? arr[i] + 1 : arr[i];
+            }
+        }
+        return arr;
     }
 
     //Vorgegebene Methode - BITTE NICHT VERÄNDERN!

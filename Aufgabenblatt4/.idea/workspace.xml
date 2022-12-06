@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1b1ea1b4-d0cd-44e5-89aa-f3ef4f6cca3b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Aufgabe2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aufgabe2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Aufgabe3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aufgabe3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Aufgabe4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aufgabe4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Aufgabe5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aufgabe5.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,7 +16,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="2175" />
+    <option name="totalTimeSeconds" value="4699" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -53,7 +55,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.Aufgabe2">
+  <component name="RunManager" selected="Application.Aufgabe5">
     <configuration name="Aufgabe1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Aufgabe1" />
       <module name="Aufgabenblatt4" />
@@ -103,10 +105,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Aufgabe1" />
         <item itemvalue="Application.Aufgabe5" />
         <item itemvalue="Application.Aufgabe4" />
         <item itemvalue="Application.Aufgabe3" />
+        <item itemvalue="Application.Aufgabe1" />
       </list>
     </recent_temporary>
   </component>
@@ -120,7 +122,7 @@
       <updated>1635321061875</updated>
       <workItem from="1670079840593" duration="34000" />
       <workItem from="1670079919183" duration="1925000" />
-      <workItem from="1670319436733" duration="2033000" />
+      <workItem from="1670319436733" duration="5351000" />
     </task>
     <servers />
   </component>
@@ -145,15 +147,6 @@
     </ignored-roots>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Aufgabe3.java</url>
-          <line>64</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="Double.toString(infoMaxTemp[0])" language="JAVA" />

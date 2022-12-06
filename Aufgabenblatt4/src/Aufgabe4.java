@@ -7,12 +7,23 @@ import java.util.Arrays;
 public class Aufgabe4 {
 
     private static void shiftHighestValue(int[] workArray, int index) {
-        // TODO: Implementieren Sie hier Ihre Lösung für die rekursive Methode
+        if (index < workArray.length - 1) {
+            shiftHighestValue(workArray, index + 1);
+            if (workArray[index] > workArray[workArray.length - 1]) {
+                int temp = workArray[index];
+                workArray[index] = workArray[workArray.length - 1];
+                workArray[workArray.length - 1] = temp;
+            }
+        }
     }
 
     private static boolean containsValue(int[] workArray, int value) {
-        // TODO: Implementieren Sie hier Ihre Lösung für die rekursive Methode
-        return false; //Zeile kann geändert oder entfernt werden.
+        if (workArray.length == 1) {
+            return value == workArray[0];
+        }
+        int[] left = Arrays.copyOfRange(workArray, 0, workArray.length / 2);
+        int[] right = Arrays.copyOfRange(workArray, workArray.length / 2, workArray.length);
+        return containsValue(left, value) || containsValue(right, value);
     }
 
     public static void main(String[] args) {
@@ -28,15 +39,15 @@ public class Aufgabe4 {
         shiftHighestValue(array3, 1);
         System.out.println(Arrays.toString(array3));
 
-        int[] array4 = {1,5,3,6,9};
+        int[] array4 = {1, 5, 3, 6, 9};
         shiftHighestValue(array4, 4);
         System.out.println(Arrays.toString(array4));
         System.out.println();
 
-        assert (array1[array1.length-1] == 46);
-        assert (array2[array2.length-1] == 5);
-        assert (array3[array3.length-1] == 5);
-        assert (array4[array4.length-1] == 9);
+        assert (array1[array1.length - 1] == 46);
+        assert (array2[array2.length - 1] == 5);
+        assert (array3[array3.length - 1] == 5);
+        assert (array4[array4.length - 1] == 9);
 
         int[] array5 = {3, 9, 17, 11, -7, 8, 0, 9, 24, -3, 17, 4};
         System.out.println(containsValue(array5, 11));
