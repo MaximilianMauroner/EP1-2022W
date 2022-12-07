@@ -13,7 +13,7 @@ public class Aufgabe3 {
     }
 
     private static void printOddNumbersDescending(int start, int end) {
-        if (end % 2 == 1) {
+        if (end % 2 != 0){
             System.out.println(end);
         }
         if (start <= end) {
