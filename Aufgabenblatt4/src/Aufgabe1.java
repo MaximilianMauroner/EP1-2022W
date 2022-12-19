@@ -60,7 +60,7 @@ public class Aufgabe1 {
     //Frage 1:
     // der Fehler ist das [-1] in keinem array existiert also kann man nicht darauf zugreifen
     //Frage 2:
-    // Da Arrays als Referenz übergeben wird und nicht als Wert (call by reference, call by value)
+    // Da bei Arrays die Referenz übergeben wird, also der Wert der Referenz, es ist aber nicht call by reference
     //Frage 3:
     // hier wird nicht eine Kopie erstellt, sondern nur die Referenz "übergeben", dies sieht man, auch wenn man ein sout der beiden Arrays macht
     //Frage 4:
