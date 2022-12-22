@@ -9,6 +9,7 @@ import codedraw.Image;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.nio.file.attribute.UserPrincipalLookupService;
 
 public class Aufgabe3 {
 
@@ -30,7 +31,48 @@ public class Aufgabe3 {
 
     //detect waldo by template matching
     private static void detectWaldo(CodeDraw myDrawObj, Image img, Image template) {
-        // TODO: Implementieren Sie hier Ihre Lösung für die Methode
+        int imgHeight = img.getHeight();
+        int imgWidth = img.getWidth();
+        int waldoHeight = template.getHeight();
+        int waldoWidth = template.getWidth();
+
+        int row = 0;
+        int col = 0;
+        long max = Long.MAX_VALUE;
+        myDrawObj.setColor(Palette.DEEP_PINK);
+        myDrawObj.setLineWidth(6);
+        for (int i = 0; i < imgHeight; i++) {
+            for (int j = 0; j < imgWidth; j++) {
+                if (j + waldoWidth < imgWidth && i + waldoHeight < imgHeight) {
+                    long temp = containsWaldo(img, template, i, j, max);
+                    if (temp < max) {
+                        row = i;
+                        col = j;
+                        max = temp;
+                        myDrawObj.drawRectangle(col, row, waldoWidth, waldoHeight);
+                        myDrawObj.show(300);
+                    }
+                }
+            }
+        }
+        System.out.println(row + " " + col + " " + max);
+    }
+
+    private static long containsWaldo(Image img, Image waldo, int imgRow, int imgCol, long high) {
+        long sum = 0;
+        for (int i = 0; i < waldo.getHeight(); i++) {
+            for (int j = 0; j < waldo.getWidth(); j++) {
+                int temp = img.getPixel(j + imgCol, i + imgRow).getRGB() - waldo.getPixel(j, i).getRGB();
+                sum += Math.abs(temp);
+                 if (sum > high) {
+                    return sum;
+                }
+            }
+        }
+        if (sum < 0) {
+            System.out.println(sum);
+        }
+        return sum;
     }
 
     public static void main(String[] args) {
