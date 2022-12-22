@@ -24,28 +24,50 @@ public class Aufgabe2 {
     }
 
     private static double[][] applyFilter(double[][] workArray, double[][] filterArray) {
-        System.out.println(Arrays.deepToString(workArray));
         double[][] newWA = new double[workArray.length][];
         for (int i = 0; i < workArray.length; i++) {
-            double[] t = new double[workArray[i].length];
+            newWA[i] = new double[workArray[i].length];
             for (int j = 0; j < workArray[i].length; j++) {
-                int sum = 0;
-                int center = filterArray.length;
-                if (center + i < workArray.length && center - i < 0 && center + j < workArray[i].length && center - j < 0) {
-                    System.out.println(i + " " + j);
-                    for (int k = 0; k < filterArray.length; k++) {
-                        for (int l = 0; l < filterArray[k].length; l++) {
-                            sum += workArray[i + k][j + l] * filterArray[k][l];
-                        }
-                    }
+                if (filterable(workArray, filterArray, i, j)) {
+                    newWA[i][j] = sumPartials(workArray, filterArray, i, j);
+                } else {
+                    newWA[i][j] = 0;
                 }
-                t[j] = sum;
             }
-            newWA[i] = t;
         }
-        return null;
+        return newWA;
     }
 
+//    helper methods
+
+    public static double sumPartials(double[][] workArray, double[][] filterArray, int row, int col) {
+        double sum = 0;
+        int workRow = row - filterArray.length / 2;
+        for (int i = 0; i < filterArray.length; i++) {
+            int workCol = col - filterArray.length / 2;
+            for (int j = 0; j < filterArray[i].length; j++) {
+                sum += workArray[workRow][workCol] * filterArray[i][j];
+                workCol++;
+            }
+            workRow++;
+        }
+        return sum;
+    }
+
+    public static boolean filterable(double[][] workArray, double[][] filterArray, int row, int col) {
+        int filterLen = filterArray.length;
+        int filterHalf = filterLen / 2;
+        int workLen = workArray.length;
+        int workColLen = workArray[row].length;
+        if (row >= filterHalf && filterHalf + row < workLen) {
+            if (col >= filterHalf && filterHalf + col < workColLen) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //    end helper methods
     private static void print(double[][] workArray) {
         if (workArray != null) {
             for (int y = 0; y < workArray.length; y++) {
@@ -62,25 +84,25 @@ public class Aufgabe2 {
     public static void main(String[] args) {
         double[][] myResultArray;
 
-        double[][] myFilter1 = genCircleFilter(3, 1.2);
-        System.out.println("Output -> myFilter1 (genCircleFilter mit size = 3 und radius = 1.2):");
-        print(myFilter1);
-
-        double[][] myFilter2 = genCircleFilter(7, 2.5);
-        System.out.println("Output -> myFilter2 (genCircleFilter mit size = 7 und radius = 2.5):");
-        print(myFilter2);
-
-        double[][] myArray1 = {{0, 0, 0, 0, 0}, {0, 1, 1, 1, 0}, {0, 2, 2, 2, 0}, {0, 3, 3, 3, 0}, {0, 0, 0, 0, 0}};
-        System.out.println("Output -> myArray1:");
-        print(myArray1);
-
-        myResultArray = applyFilter(myArray1, myFilter1);
-        System.out.println("Output -> myFilter1 applied to myArray1:");
-        print(myResultArray);
-
-        myResultArray = applyFilter(myArray1, myFilter2);
-        System.out.println("Output -> myFilter2 applied to myArray1:");
-        print(myResultArray);
+//        double[][] myFilter1 = genCircleFilter(3, 1.2);
+//        System.out.println("Output -> myFilter1 (genCircleFilter mit size = 3 und radius = 1.2):");
+//        print(myFilter1);
+//
+//        double[][] myFilter2 = genCircleFilter(7, 2.5);
+//        System.out.println("Output -> myFilter2 (genCircleFilter mit size = 7 und radius = 2.5):");
+//        print(myFilter2);
+//
+//        double[][] myArray1 = {{0, 0, 0, 0, 0}, {0, 1, 1, 1, 0}, {0, 2, 2, 2, 0}, {0, 3, 3, 3, 0}, {0, 0, 0, 0, 0}};
+//        System.out.println("Output -> myArray1:");
+//        print(myArray1);
+//
+//        myResultArray = applyFilter(myArray1, myFilter1);
+//        System.out.println("Output -> myFilter1 applied to myArray1:");
+//        print(myResultArray);
+//
+//        myResultArray = applyFilter(myArray1, myFilter2);
+//        System.out.println("Output -> myFilter2 applied to myArray1:");
+//        print(myResultArray);
 
         //Beispiel aus Aufgabenblatt
         double[][] myArray3 = {{0, 1, 2, 3}, {4, 5, 6, 7}, {8, 9, 10, 11}};
@@ -94,9 +116,14 @@ public class Aufgabe2 {
         print(myResultArray);
 
         double[][] myArray4 = {{0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 1, 2, 3, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}};
+        double[][] myFilter4 = {{0, 0, 0}, {0, 0, 0}, {0, 0.5, 0}};
         System.out.println("Output -> myArray4:");
         print(myArray4);
-        //TODO: Erstellen Sie den Filter aus dem Aufgabenblatt, wenden Sie ihn auf myArray4 an und geben Sie das Ergebnis mittels print() aus
+        System.out.println("Output -> myFilter4:");
+        print(myFilter4);
+        myResultArray = applyFilter(myArray4, myFilter4);
+        System.out.println("Output -> myFilter4 applied to myArray4:");
+        print(myResultArray);
     }
 
 
