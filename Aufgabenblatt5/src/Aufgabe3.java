@@ -31,46 +31,46 @@ public class Aufgabe3 {
 
     //detect waldo by template matching
     private static void detectWaldo(CodeDraw myDrawObj, Image img, Image template) {
-        int imgHeight = img.getHeight();
-        int imgWidth = img.getWidth();
-        int waldoHeight = template.getHeight();
-        int waldoWidth = template.getWidth();
+        int[][] imgArray = convertImg2Array(img);
+        int[][] templateArray = convertImg2Array(template);
+        int imgHeight = imgArray.length;
+        int imgWidth = imgArray[0].length;
+        int waldoHeight = templateArray.length;
+        int waldoWidth = templateArray[0].length;
 
-        int row = 0;
-        int col = 0;
+        int row;
+        int col;
         long max = Long.MAX_VALUE;
         myDrawObj.setColor(Palette.DEEP_PINK);
         myDrawObj.setLineWidth(6);
+
         for (int i = 0; i < imgHeight; i++) {
             for (int j = 0; j < imgWidth; j++) {
                 if (j + waldoWidth < imgWidth && i + waldoHeight < imgHeight) {
-                    long temp = containsWaldo(img, template, i, j, max);
+                    long temp = containsWaldo(imgArray, templateArray, i, j, max);
                     if (temp < max) {
                         row = i;
                         col = j;
                         max = temp;
+                        myDrawObj.drawImage(0, 0, img);
                         myDrawObj.drawRectangle(col, row, waldoWidth, waldoHeight);
                         myDrawObj.show(300);
                     }
                 }
             }
         }
-        System.out.println(row + " " + col + " " + max);
     }
 
-    private static long containsWaldo(Image img, Image waldo, int imgRow, int imgCol, long high) {
+    private static long containsWaldo(int[][] img, int[][] waldo, int imgRow, int imgCol, long high) {
         long sum = 0;
-        for (int i = 0; i < waldo.getHeight(); i++) {
-            for (int j = 0; j < waldo.getWidth(); j++) {
-                int temp = img.getPixel(j + imgCol, i + imgRow).getRGB() - waldo.getPixel(j, i).getRGB();
+        for (int i = 0; i < waldo.length; i++) {
+            for (int j = 0; j < waldo[i].length; j++) {
+                int temp = img[i + imgRow][j + imgCol] - waldo[i][j];
                 sum += Math.abs(temp);
-                 if (sum > high) {
+                if (sum > high) {
                     return sum;
                 }
             }
-        }
-        if (sum < 0) {
-            System.out.println(sum);
         }
         return sum;
     }
@@ -78,16 +78,16 @@ public class Aufgabe3 {
     public static void main(String[] args) {
 
         //waldo1
-        String linkWaldo = "https://owncloud.tuwien.ac.at/index.php/s/6NcsuQdriPbHcKN/download"; //waldo1.png
-        String linkTemplate = "https://owncloud.tuwien.ac.at/index.php/s/AwlmIBqj2V1qGV7/download"; //template1.png
+//        String linkWaldo = "https://owncloud.tuwien.ac.at/index.php/s/6NcsuQdriPbHcKN/download"; //waldo1.png
+//        String linkTemplate = "https://owncloud.tuwien.ac.at/index.php/s/AwlmIBqj2V1qGV7/download"; //template1.png
 
         //waldo2
-        //String linkWaldo = "https://owncloud.tuwien.ac.at/index.php/s/922nyXVsBkMKz6K/download"; //waldo2.png
-        //String linkTemplate = "https://owncloud.tuwien.ac.at/index.php/s/tqTFXxF2BkeKnhm/download"; //template2.png
+//        String linkWaldo = "https://owncloud.tuwien.ac.at/index.php/s/922nyXVsBkMKz6K/download"; //waldo2.png
+//        String linkTemplate = "https://owncloud.tuwien.ac.at/index.php/s/tqTFXxF2BkeKnhm/download"; //template2.png
 
         //waldo3
-        //String linkWaldo = "https://owncloud.tuwien.ac.at/index.php/s/DR2u4Xf5muAZsWo/download"; //waldo3.png
-        //String linkTemplate = "https://owncloud.tuwien.ac.at/index.php/s/xEMZlbdHJ4ZfLfz/download"; //template3.png
+        String linkWaldo = "https://owncloud.tuwien.ac.at/index.php/s/DR2u4Xf5muAZsWo/download"; //waldo3.png
+        String linkTemplate = "https://owncloud.tuwien.ac.at/index.php/s/xEMZlbdHJ4ZfLfz/download"; //template3.png
 
         // open image file
         Image img = Image.fromUrl(linkWaldo);
