@@ -1,0 +1,45 @@
+
+0
+java:S1220""Move this file to a named package.
+H
+java:S1172	"3Remove these unused method parameters "row", "col".(’À›.
+<
+java:S1168"&Return an empty array instead of null.(•πÔç
+M
+java:S1135
+"2Complete the task associated to this TODO comment.(Ò†áÖ˛ˇˇˇˇ
+r
+java:S1172"WRemove these unused method parameters "myDrawObj", "currentGameBoard", "oneSquareSize".( ˆÊ◊˙ˇˇˇˇ
+M
+java:S1135"2Complete the task associated to this TODO comment.(Ò†áÖ˛ˇˇˇˇ
+[
+java:S1172"@Remove these unused method parameters "currentGameBoard", "col".(∑£‘é˝ˇˇˇˇ
+M
+java:S1135"2Complete the task associated to this TODO comment.(Ò†áÖ˛ˇˇˇˇ
+e
+java:S1172"JRemove these unused method parameters "currentGameBoard", "player", "col".(ÓöÒí¯ˇˇˇˇ
+M
+java:S1135"2Complete the task associated to this TODO comment.(Ò†áÖ˛ˇˇˇˇ
+Y
+java:S1172"CRemove these unused method parameters "currentGameBoard", "player".(ãúÑõ
+M
+java:S1135"2Complete the task associated to this TODO comment.(Ò†áÖ˛ˇˇˇˇ
+U
+java:S1854I":Remove this useless assignment to local variable "mouseY".(ÑÎ”¶˛ˇˇˇˇ
+P
+java:S1854H":Remove this useless assignment to local variable "mouseX".(·√è∞
+E
+java:S14810"/Remove this unused "fieldsUsed" local variable.(Ó™¢¨
+N	java:S106?"9Replace this use of System.out or System.err by a logger.(íÃÌû
+A
+java:S1481H"+Remove this unused "mouseX" local variable.(·√è∞
+F
+java:S1481I"+Remove this unused "mouseY" local variable.(ÑÎ”¶˛ˇˇˇˇ
+G
+java:S1135J"2Complete the task associated to this TODO comment.(ﬂÄ±O
+N
+java:S1144"3Remove this unused private "isMovePossible" method.(∑£‘é˝ˇˇˇˇ
+H
+java:S1144"-Remove this unused private "makeMove" method.(ÓöÒí¯ˇˇˇˇ
+G
+java:S1144"1Remove this unused private "existsWinner" method.(ãúÑõ
