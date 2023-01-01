@@ -5,6 +5,8 @@
 import codedraw.*;
 
 import java.awt.*;
+import java.security.KeyPair;
+import java.util.Arrays;
 
 public class Aufgabe1 {
 
@@ -49,7 +51,7 @@ public class Aufgabe1 {
     }
 
     private static boolean existsWinner(int[][] currentGameBoard, int player) {
-        if (existsStraightWinner(currentGameBoard, player)) {
+        if (existsHorVertWinner(currentGameBoard, player)) {
             return true;
         }
         if (existsDiagonalWinner(currentGameBoard, player)) {
@@ -58,7 +60,7 @@ public class Aufgabe1 {
         return false;
     }
 
-    private static boolean existsStraightWinner(int[][] currentGameBoard, int player) {
+    private static boolean existsHorVertWinner(int[][] currentGameBoard, int player) {
         for (int i = 0; i < currentGameBoard.length; i++) {
             int wins = 0;
             for (int j = 0; j < currentGameBoard[i].length; j++) {
@@ -90,14 +92,11 @@ public class Aufgabe1 {
 
     private static boolean existsDiagonalWinner(int[][] currentGameBoard, int player) {
         //++
-        for (int i = 0; i < currentGameBoard.length - 4; i++) {
-            for (int j = 0; j < currentGameBoard[i].length - 4; j++) {
+        for (int i = 0; i < currentGameBoard.length - 3; i++) {
+            for (int j = 0; j < currentGameBoard[i].length - 3; j++) {
                 if (player == currentGameBoard[i][j] && player == currentGameBoard[i + 1][j + 1]) {
-                    System.out.println("+2");
                     if (player == currentGameBoard[i + 2][j + 2]) {
-                        System.out.println("+3");
                         if (player == currentGameBoard[i + 3][j + 3]) {
-                            System.out.println("+4");
                             return true;
                         }
                     }
@@ -105,8 +104,8 @@ public class Aufgabe1 {
             }
         }
         //--
-        for (int i = currentGameBoard.length - 1; i >= 4; i--) {
-            for (int j = currentGameBoard[i].length - 1; j >= 4; j--) {
+        for (int i = currentGameBoard.length - 1; i >= 3; i--) {
+            for (int j = currentGameBoard[i].length - 1; j >= 3; j--) {
                 if (player == currentGameBoard[i][j] && player == currentGameBoard[i - 1][j - 1]) {
                     if (player == currentGameBoard[i - 2][j - 2]) {
                         if (player == currentGameBoard[i - 3][j - 3]) {
@@ -117,8 +116,8 @@ public class Aufgabe1 {
             }
         }
         //+-
-        for (int i = 0; i < currentGameBoard.length - 4; i++) {
-            for (int j = currentGameBoard[i].length - 1; j >= 4; j--) {
+        for (int i = 0; i < currentGameBoard.length - 3; i++) {
+            for (int j = currentGameBoard[i].length - 1; j >= 3; j--) {
                 if (player == currentGameBoard[i][j] && player == currentGameBoard[i + 1][j - 1]) {
                     if (player == currentGameBoard[i + 2][j - 2]) {
                         if (player == currentGameBoard[i + 3][j - 3]) {
@@ -129,8 +128,8 @@ public class Aufgabe1 {
             }
         }
         //-+
-        for (int i = currentGameBoard.length - 1; i >= 4; i--) {
-            for (int j = 0; j < currentGameBoard[i].length - 4; j++) {
+        for (int i = currentGameBoard.length - 1; i >= 3; i--) {
+            for (int j = 0; j < currentGameBoard[i].length - 3; j++) {
                 if (player == currentGameBoard[i][j] && player == currentGameBoard[i - 1][j + 1]) {
                     if (player == currentGameBoard[i - 2][j + 2]) {
                         if (player == currentGameBoard[i - 3][j + 3]) {
@@ -201,7 +200,8 @@ public class Aufgabe1 {
         System.out.println("Player " + player + (player == 1 ? " (RED)" : " (YELLOW)") + " has to make a move!");
         while (!myDrawObj.isClosed() && gameActive) {
             if (myEventSC.hasKeyPressEvent()) {
-                if (myEventSC.nextKeyPressEvent().getChar() == 'q') {
+                KeyPressEvent kpe = myEventSC.nextKeyPressEvent();
+                if (kpe.getChar() == 'q') {
                     gameActive = false;
                 }
             } else if (myEventSC.hasMouseClickEvent()) {
